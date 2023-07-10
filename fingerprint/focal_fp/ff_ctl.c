@@ -32,7 +32,7 @@
 #include <linux/miscdevice.h>
 #include <linux/fb.h>
 #include <linux/notifier.h>
-#include <linux/wakelock.h>
+#include <x01ad/wakelock.h>
 
 #ifdef CONFIG_COMPAT
 #include <linux/compat.h>

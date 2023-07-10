@@ -16,7 +16,7 @@
 #include <linux/io.h>
 #include <linux/spinlock.h>
 #include <linux/sched.h>
-#include <linux/wakelock.h>
+#include <x01ad/wakelock.h>
 #include <linux/kthread.h>
 #include <linux/cdev.h>
 #include <linux/fs.h>
