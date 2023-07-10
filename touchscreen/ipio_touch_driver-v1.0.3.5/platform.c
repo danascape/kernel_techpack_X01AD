@@ -32,6 +32,7 @@
 #include "platform.h"
 #include "core/mp_test.h"
 #include "core/gesture.h"
+#include <x01ad/wakelock.h>
 
 #define DTS_INT_GPIO	"touch,irq-gpio"
 #define DTS_RESET_GPIO	"touch,reset-gpio"
@@ -44,6 +45,13 @@
 #ifdef USE_KTHREAD
 static DECLARE_WAIT_QUEUE_HEAD(waiter);
 #endif
+
+/*Huaqin add for fw update fail by liufurong at 20181112 start*/
+#ifdef BOOT_FW_UPGRADE
+extern int tp_fw_update_flag;
+struct wake_lock ili_tp_update_wakelock;
+#endif
+/*Huaqin add for fw update fail by liufurong at 20181112 end*/
 
 /* Debug level */
 uint32_t ipio_debug_level = 0;//DEBUG_ALL;
@@ -460,9 +468,15 @@ static int kthread_handler(void *arg)
 		ilitek_platform_disable_irq();
 
 #ifdef BOOT_FW_UPGRADE
+/*Huaqin add for fw update fail by liufurong at 20181112 start*/
+		wake_lock(&ili_tp_update_wakelock);
+		tp_fw_update_flag = 1;
 		res = core_firmware_boot_upgrade();
 		if (res < 0)
 			ipio_err("Failed to upgrade FW at boot stage\n");
+		tp_fw_update_flag = 0;
+		wake_unlock(&ili_tp_update_wakelock);
+/*Huaqin add for fw update fail by liufurong at 20181112 end*/
 #endif
 /* Huaqin modify for ZQL1830-600 by liufurong at 20180828 start */
 		//ilitek_platform_input_init();
@@ -980,6 +994,9 @@ static int ilitek_platform_probe(struct i2c_client *client, const struct i2c_dev
 	}
 /* huaqin add for gesture by liufurong at 20180807 end */
 #ifdef BOOT_FW_UPGRADE
+	/*Huaqin add for fw update fail by liufurong at 20181112 start*/
+	wake_lock_init(&ili_tp_update_wakelock, WAKE_LOCK_SUSPEND, "ili_tp-update");
+	/*Huaqin add for fw update fail by liufurong at 20181112 end*/
 	ipd->update_thread = kthread_run(kthread_handler, "boot_fw", "ili_fw_boot");
 	if (ipd->update_thread == (struct task_struct *)ERR_PTR) {
 		ipd->update_thread = NULL;
