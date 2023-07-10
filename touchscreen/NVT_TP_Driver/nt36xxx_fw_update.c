@@ -18,7 +18,7 @@
 
 #include <linux/delay.h>
 #include <linux/firmware.h>
-#include <linux/wakelock.h>
+#include <x01ad/wakelock.h>
 
 #include "nt36xxx.h"
 /* Huaqin add for nvt fw update fail by liufurong at 20181109 start */

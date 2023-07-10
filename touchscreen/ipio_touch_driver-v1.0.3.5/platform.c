@@ -32,7 +32,7 @@
 #include "platform.h"
 #include "core/mp_test.h"
 #include "core/gesture.h"
-#include <linux/wakelock.h>
+#include <x01ad/wakelock.h>
 
 #define DTS_INT_GPIO	"touch,irq-gpio"
 #define DTS_RESET_GPIO	"touch,reset-gpio"
