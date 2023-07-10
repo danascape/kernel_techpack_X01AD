@@ -7,4 +7,6 @@ config MACH_ASUS_X01AD
 	help
 	  Support for Asus X01AD
 
+source "techpack/x01ad/touchscreen/Kconfig"
+
 endmenu

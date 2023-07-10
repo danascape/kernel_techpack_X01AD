@@ -1,0 +1,7 @@
+menu "Touchscreen"
+	depends on INPUT_TOUCHSCREEN
+
+source "techpack/x01ad/touchscreen/NVT_TP_Driver/Kconfig"
+source "techpack/x01ad/touchscreen/ipio_touch_driver-v1.0.3.5/Kconfig"
+
+endmenu
