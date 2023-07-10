@@ -30,6 +30,7 @@
 #include <linux/i2c.h>
 #include <linux/list.h>
 
+#include <x01ad/input-event-codes.h>
 #include "../common.h"
 #include "../platform.h"
 #include "config.h"

@@ -1,0 +1,8 @@
+#define KEY_TP_GESTURE_DOUBLE_CLICK 	0x2ee
+#define KEY_TP_GESTURE_SWIPE_UP 	0x2ef
+#define KEY_TP_GESTURE_C 		0x2f0
+#define KEY_TP_GESTURE_E 		0x2f1
+#define KEY_TP_GESTURE_S 		0x2f2
+#define KEY_TP_GESTURE_V 		0x2f3
+#define KEY_TP_GESTURE_W 		0x2f4
+#define KEY_TP_GESTURE_Z 		0x2f5

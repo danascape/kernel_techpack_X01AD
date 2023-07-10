@@ -20,6 +20,7 @@
 
 #include <linux/i2c.h>
 #include <linux/input.h>
+#include <x01ad/input-event-codes.h>
 
 /* huaqin add for gesture by liufurong at 20180801 start */
 #include <linux/regulator/consumer.h>

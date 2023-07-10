@@ -86,6 +86,8 @@
 #include <linux/earlysuspend.h>
 #endif
 
+#include <x01ad/input-event-codes.h>
+
 /*
  * Relative Driver with Touch IC
  */
